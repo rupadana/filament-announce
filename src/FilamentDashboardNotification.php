@@ -8,7 +8,7 @@ class FilamentDashboardNotification
 
     /**
      * Get the value of pollingInterval
-     */ 
+     */
     public function getPollingInterval()
     {
         return $this->pollingInterval;
@@ -17,8 +17,8 @@ class FilamentDashboardNotification
     /**
      * Set the value of pollingInterval
      *
-     * @return  self
-     */ 
+     * @return self
+     */
     public function pollingInterval(string $pollingInterval)
     {
         $this->pollingInterval = $pollingInterval;

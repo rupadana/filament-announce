@@ -4,32 +4,30 @@ namespace Rupadana\FilamentDashboardNotification\Components;
 
 use Carbon\CarbonInterface;
 use Filament\Notifications\Notification;
-use Filament\Widgets\Widget;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Livewire\Attributes\On;
-use Livewire\WithPagination;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\Relation;
-use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\DatabaseNotification;
 use Livewire\Component;
 use Rupadana\FilamentDashboardNotification\FilamentDashboardNotification;
 
 class DashboardNotification extends Component
 {
-
     public static ?string $authGuard = null;
-    
+
     protected static string $view = 'filament-dashboard-notification::dashboard-notification';
 
     protected int | string | array $columnSpan = 2;
 
     protected static ?int $sort = -20;
 
-    public function getUnreadNotificationsData() {
+    public function getUnreadNotificationsData()
+    {
         return $this->getUnreadNotificationsQuery()->get();
     }
 
@@ -75,7 +73,7 @@ class DashboardNotification extends Component
 
     public function getNotifications(): DatabaseNotificationCollection | Paginator
     {
-        if (!$this->isPaginated()) {
+        if (! $this->isPaginated()) {
             /** @phpstan-ignore-next-line */
             return $this->getNotificationsQuery()->get();
         }
@@ -130,7 +128,7 @@ class DashboardNotification extends Component
     {
         $user = $this->getUser();
 
-        if (!$user) {
+        if (! $user) {
             return null;
         }
 
@@ -154,7 +152,6 @@ class DashboardNotification extends Component
         return $date->diffForHumans();
     }
 
-    
     /**
      * @return array<string>
      */
@@ -163,16 +160,16 @@ class DashboardNotification extends Component
         return [];
     }
 
-    public function render() {
+    public function render()
+    {
         return static::$view;
     }
 
     /**
      * Get the value of pollingInterval
-     */ 
+     */
     public function getPollingInterval()
     {
         return app(FilamentDashboardNotification::class)->getPollingInterval();
     }
-
 }

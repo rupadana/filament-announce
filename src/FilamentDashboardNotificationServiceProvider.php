@@ -13,14 +13,12 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Blade;
 use Livewire\Features\SupportTesting\Testable;
 use Livewire\Livewire;
+use Rupadana\FilamentDashboardNotification\Commands\FilamentDashboardNotificationCommand;
+use Rupadana\FilamentDashboardNotification\Components\DashboardNotification;
+use Rupadana\FilamentDashboardNotification\Testing\TestsFilamentDashboardNotification;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Rupadana\FilamentDashboardNotification\Commands\FilamentDashboardNotificationCommand;
-use Rupadana\FilamentDashboardNotification\Components\Alert;
-use Rupadana\FilamentDashboardNotification\Components\DashboardNotification;
-use Rupadana\FilamentDashboardNotification\Components\DashboardNotificationWrapper;
-use Rupadana\FilamentDashboardNotification\Testing\TestsFilamentDashboardNotification;
 
 class FilamentDashboardNotificationServiceProvider extends PackageServiceProvider
 {
@@ -72,7 +70,6 @@ class FilamentDashboardNotificationServiceProvider extends PackageServiceProvide
             return new FilamentDashboardNotification();
         });
 
-        
     }
 
     public function packageBooted(): void
@@ -83,7 +80,7 @@ class FilamentDashboardNotificationServiceProvider extends PackageServiceProvide
             'panels::body.start',
             fn (): string => Blade::render('@livewire(\'filament-dashboard-notification\')'),
         );
-        
+
         // Asset Registration
         FilamentAsset::register(
             $this->getAssets(),

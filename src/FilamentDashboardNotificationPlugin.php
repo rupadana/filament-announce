@@ -2,10 +2,8 @@
 
 namespace Rupadana\FilamentDashboardNotification;
 
-
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-use Rupadana\FilamentDashboardNotification\Widgets\DashboardNotificationWidget;
 
 class FilamentDashboardNotificationPlugin implements Plugin
 {
@@ -35,7 +33,8 @@ class FilamentDashboardNotificationPlugin implements Plugin
         return $plugin;
     }
 
-    public function pollingInterval(?string $interval) {
+    public function pollingInterval(?string $interval)
+    {
         app(FilamentDashboardNotification::class)->pollingInterval($interval);
 
         return $this;
