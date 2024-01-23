@@ -23,13 +23,6 @@ Optionally, you can publish the views using
 php artisan vendor:publish --tag="filament-dashboard-notification-views"
 ```
 
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
 ## Usage
 You must enable Announce by adding the class to your Filament Panel's plugin() or plugins([]) method:
 
