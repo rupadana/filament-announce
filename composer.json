@@ -1,5 +1,5 @@
 {
-    "name": "rupadana/filament-dashboard-notification",
+    "name": "rupadana/filament-announce",
     "description": "Filament Announce",
     "keywords": [
         "rupadana",
@@ -7,10 +7,10 @@
         "filament",
         "filamentphp"
     ],
-    "homepage": "https://github.com/rupadana/filament-dashboard-notification",
+    "homepage": "https://github.com/rupadana/filament-announce",
     "support": {
-        "issues": "https://github.com/rupadana/filament-dashboard-notification/issues",
-        "source": "https://github.com/rupadana/filament-dashboard-notification"
+        "issues": "https://github.com/rupadana/filament-announce/issues",
+        "source": "https://github.com/rupadana/filament-announce"
     },
     "license": "MIT",
     "authors": [
