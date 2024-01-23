@@ -1,4 +1,4 @@
-# Filament Dashboard Notification
+# Filament Announce
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/rupadana/filament-announce.svg?style=flat-square)](https://packagist.org/packages/rupadana/filament-announce)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/rupadana/filament-announce/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/rupadana/filament-announce/actions?query=workflow%3Arun-tests+branch%3Amain)
@@ -7,7 +7,7 @@
 
 
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+An easy way to shout your exceptional offerings to the potential users 🤑... Or some serious pressure bad employees 😡
 
 ## Installation
 
@@ -20,7 +20,7 @@ composer require rupadana/filament-announce
 Optionally, you can publish the views using
 
 ```bash
-php artisan vendor:publish --tag="filament-dashboard-notification-views"
+php artisan vendor:publish --tag="filament-announce-views"
 ```
 
 ## Usage
@@ -37,7 +37,7 @@ class CustomersPanelProvider extends PanelProvider
             ...
             ->plugin(
                 FilamentAnnouncePlugin::make()
-                    ->pollingInterval(30) // optional, by default the polling interval is set to null
+                    ->pollingInterval(30) // optional, by default it is set to null
             )
     }
 }
@@ -56,6 +56,11 @@ Announce::make()
     ->body('Filament can now show very important message to specific users!')
     ->announceTo(User::all());
 ```
+
+## Todo
+- Can add actions to every announcement
+- Provide a resource/action to send announcement
+- Add banner-like implementations for global announcement
 
 ## Testing
 
