@@ -1,10 +1,11 @@
 {
     "name": "rupadana/filament-dashboard-notification",
-    "description": "Filament Dashboard Notification",
+    "description": "Filament Announce",
     "keywords": [
         "rupadana",
         "laravel",
-        "filament-dashboard-notification"
+        "filament",
+        "filamentphp"
     ],
     "homepage": "https://github.com/rupadana/filament-dashboard-notification",
     "support": {
@@ -40,13 +41,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Rupadana\\FilamentDashboardNotification\\": "src/",
-            "Rupadana\\FilamentDashboardNotification\\Database\\Factories\\": "database/factories/"
+            "Rupadana\\FilamentAnnounce\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Rupadana\\FilamentDashboardNotification\\Tests\\": "tests/"
+            "Rupadana\\FilamentAnnounce\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -66,10 +66,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Rupadana\\FilamentDashboardNotification\\FilamentDashboardNotificationServiceProvider"
+                "Rupadana\\FilamentAnnounce\\FilamentAnnounceServiceProvider"
             ],
             "aliases": {
-                "FilamentDashboardNotification": "Rupadana\\FilamentDashboardNotification\\Facades\\FilamentDashboardNotification"
+                "FilamentAnnounce": "Rupadana\\FilamentAnnounce\\Facades\\FilamentAnnounce"
             }
         }
     },

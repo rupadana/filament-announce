@@ -44,10 +44,37 @@ return [
 ```
 
 ## Usage
+You must enable Announce by adding the class to your Filament Panel's plugin() or plugins([]) method:
 
 ```php
-$filamentDashboardNotification = new Rupadana\FilamentDashboardNotification();
-echo $filamentDashboardNotification->echoPhrase('Hello, Rupadana!');
+use Rupadana\FilamentAnnounce\FilamentAnnouncePlugin;
+
+class CustomersPanelProvider extends PanelProvider
+{
+    public function panel(Panel $panel): Panel
+    {
+        return $panel
+            ...
+            ->plugin(
+                FilamentAnnouncePlugin::make()
+                    ->pollingInterval(30) // optional, by default the polling interval is set to null
+            )
+    }
+}
+
+```
+
+Now you can announce whatever to users:
+
+```php
+use App\Models\User;
+use Rupadana\FilamentAnnounce\Announce;
+
+Announce::make()
+    ->title('Big News!')
+    ->icon('heroicon-o-megaphone')
+    ->body('Filament can now show very important message to specific users!')
+    ->announceTo(User::all());
 ```
 
 ## Testing
