@@ -5,8 +5,6 @@ namespace Rupadana\FilamentAnnounce\Components;
 use Carbon\CarbonInterface;
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Contracts\Pagination\Paginator;
-use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -15,81 +13,39 @@ use Illuminate\Notifications\DatabaseNotificationCollection;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Rupadana\FilamentAnnounce\FilamentAnnounce;
+use Rupadana\FilamentAnnounce\Notifications\AnnounceNotification;
 
 class Announcement extends Component
 {
     public static ?string $authGuard = null;
 
-    protected static string $view = 'filament-announce::announce';
-
-    protected int | string | array $columnSpan = 2;
-
-    protected static ?int $sort = -20;
+    protected static string $view = 'filament-announce::announcement-wrapper';
 
     public function getUnreadNotificationsData()
     {
         return $this->getUnreadNotificationsQuery()->get();
     }
 
-    #[On('databaseNotificationsSent')]
-    public function refresh(): void
-    {
-    }
-
-    #[On('notificationClosed')]
-    public function removeNotification(string $id): void
-    {
-        $this->getNotificationsQuery()
-            ->where('id', $id)
-            ->delete();
-    }
-
-    #[On('markedNotificationDashboardAsRead')]
+    #[On('markedAnnouncementAsRead')]
     public function markNotificationAsRead(string $id): void
     {
-        // dd($id);
         $this->getNotificationsQuery()
             ->where('id', $id)
             ->update(['read_at' => now()]);
     }
 
-    #[On('markedNotificationAsUnread')]
-    public function markNotificationAsUnread(string $id): void
+    public function getNotifications(): DatabaseNotificationCollection
     {
-        $this->getNotificationsQuery()
-            ->where('id', $id)
-            ->update(['read_at' => null]);
+        return $this->getNotificationsQuery()->get();
     }
-
-    public function clearNotifications(): void
-    {
-        $this->getNotificationsQuery()->delete();
-    }
-
-    public function markAllNotificationsAsRead(): void
-    {
-        $this->getUnreadNotificationsQuery()->update(['read_at' => now()]);
-    }
-
-    public function getNotifications(): DatabaseNotificationCollection | Paginator
-    {
-        if (! $this->isPaginated()) {
-            /** @phpstan-ignore-next-line */
-            return $this->getNotificationsQuery()->get();
-        }
-
-        return $this->getNotificationsQuery()->simplePaginate(50);
-    }
-
-    // public function isPaginated(): bool
-    // {
-    //     return static::$isPaginated;
-    // }
 
     public function getNotificationsQuery(): Builder | Relation
     {
         /** @phpstan-ignore-next-line */
-        return $this->getUser()->notifications()->where('data->format', 'filament');
+        return $this
+            ->getUser()
+            ->notifications()
+            ->where('type', AnnounceNotification::class);
     }
 
     public function getUnreadNotificationsQuery(): Builder | Relation
@@ -103,21 +59,10 @@ class Announcement extends Component
         return $this->getUnreadNotificationsQuery()->count();
     }
 
-    // public function getPollingInterval(): ?string
-    // {
-    //     return static::$pollingInterval;
-    // }
-
-    // public function getTrigger(): ?View
-    // {
-    //     $viewPath = static::$trigger;
-
-    //     if (blank($viewPath)) {
-    //         return null;
-    //     }
-
-    //     return view($viewPath);
-    // }
+    public function getPollingInterval(): ?string
+    {
+        return app(FilamentAnnounce::class)->getPollingInterval();
+    }
 
     public function getUser(): Model | Authenticatable | null
     {
@@ -152,24 +97,8 @@ class Announcement extends Component
         return $date->diffForHumans();
     }
 
-    /**
-     * @return array<string>
-     */
-    public function queryStringHandlesPagination(): array
-    {
-        return [];
-    }
-
     public function render()
     {
         return static::$view;
-    }
-
-    /**
-     * Get the value of pollingInterval
-     */
-    public function getPollingInterval()
-    {
-        return app(FilamentAnnounce::class)->getPollingInterval();
     }
 }

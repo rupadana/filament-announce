@@ -4,7 +4,7 @@ namespace Rupadana\FilamentAnnounce;
 
 class FilamentAnnounce
 {
-    protected $pollingInterval = '30s';
+    protected ?string $pollingInterval = null;
 
     /**
      * Get the value of pollingInterval
