@@ -1,15 +1,15 @@
 <?php
 
-namespace Rupadana\FilamentDashboardNotification;
+namespace Rupadana\FilamentAnnounce;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 
-class FilamentDashboardNotificationPlugin implements Plugin
+class FilamentAnnouncePlugin implements Plugin
 {
     public function getId(): string
     {
-        return 'filament-dashboard-notification';
+        return 'filament-announce';
     }
 
     public function register(Panel $panel): void
@@ -35,7 +35,7 @@ class FilamentDashboardNotificationPlugin implements Plugin
 
     public function pollingInterval(?string $interval)
     {
-        app(FilamentDashboardNotification::class)->pollingInterval($interval);
+        app(FilamentAnnounce::class)->pollingInterval($interval);
 
         return $this;
     }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Rupadana\FilamentDashboardNotification;
+namespace Rupadana\FilamentAnnounce;
 
-class FilamentDashboardNotification
+class FilamentAnnounce
 {
     protected $pollingInterval = '30s';
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Rupadana\FilamentDashboardNotification;
+namespace Rupadana\FilamentAnnounce;
 
 use Filament\Support\Assets\AlpineComponent;
 use Filament\Support\Assets\Asset;
@@ -13,18 +13,18 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Blade;
 use Livewire\Features\SupportTesting\Testable;
 use Livewire\Livewire;
-use Rupadana\FilamentDashboardNotification\Commands\FilamentDashboardNotificationCommand;
-use Rupadana\FilamentDashboardNotification\Components\DashboardNotification;
-use Rupadana\FilamentDashboardNotification\Testing\TestsFilamentDashboardNotification;
+use Rupadana\FilamentAnnounce\Commands\FilamentAnnounceCommand;
+use Rupadana\FilamentAnnounce\Components\DashboardNotification;
+use Rupadana\FilamentAnnounce\Testing\TestsFilamentAnnounce;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class FilamentDashboardNotificationServiceProvider extends PackageServiceProvider
+class FilamentAnnounceServiceProvider extends PackageServiceProvider
 {
-    public static string $name = 'filament-dashboard-notification';
+    public static string $name = 'filament-announce';
 
-    public static string $viewNamespace = 'filament-dashboard-notification';
+    public static string $viewNamespace = 'filament-announce';
 
     public function configurePackage(Package $package): void
     {
@@ -40,9 +40,9 @@ class FilamentDashboardNotificationServiceProvider extends PackageServiceProvide
                     ->publishConfigFile()
                     ->publishMigrations()
                     ->askToRunMigrations()
-                    ->askToStarRepoOnGitHub('rupadana/filament-dashboard-notification');
+                    ->askToStarRepoOnGitHub('rupadana/filament-announce');
             })
-            ->hasViews('filament-dashboard-notification');
+            ->hasViews('filament-announce');
 
         $configFileName = $package->shortName();
 
@@ -66,19 +66,19 @@ class FilamentDashboardNotificationServiceProvider extends PackageServiceProvide
     public function packageRegistered(): void
     {
 
-        $this->app->singleton(FilamentDashboardNotification::class, function () {
-            return new FilamentDashboardNotification();
+        $this->app->singleton(FilamentAnnounce::class, function () {
+            return new FilamentAnnounce();
         });
 
     }
 
     public function packageBooted(): void
     {
-        Livewire::component('filament-dashboard-notification', DashboardNotification::class);
+        Livewire::component('filament-announce', DashboardNotification::class);
 
         FilamentView::registerRenderHook(
             'panels::body.start',
-            fn (): string => Blade::render('@livewire(\'filament-dashboard-notification\')'),
+            fn (): string => Blade::render('@livewire(\'filament-announce\')'),
         );
 
         // Asset Registration
@@ -99,18 +99,18 @@ class FilamentDashboardNotificationServiceProvider extends PackageServiceProvide
         if (app()->runningInConsole()) {
             foreach (app(Filesystem::class)->files(__DIR__ . '/../stubs/') as $file) {
                 $this->publishes([
-                    $file->getRealPath() => base_path("stubs/filament-dashboard-notification/{$file->getFilename()}"),
-                ], 'filament-dashboard-notification-stubs');
+                    $file->getRealPath() => base_path("stubs/filament-announce/{$file->getFilename()}"),
+                ], 'filament-announce-stubs');
             }
         }
 
         // Testing
-        Testable::mixin(new TestsFilamentDashboardNotification());
+        Testable::mixin(new TestsFilamentAnnounce());
     }
 
     protected function getAssetPackageName(): ?string
     {
-        return 'rupadana/filament-dashboard-notification';
+        return 'rupadana/filament-announce';
     }
 
     /**
@@ -119,9 +119,9 @@ class FilamentDashboardNotificationServiceProvider extends PackageServiceProvide
     protected function getAssets(): array
     {
         return [
-            // AlpineComponent::make('filament-dashboard-notification', __DIR__ . '/../resources/dist/components/filament-dashboard-notification.js'),
-            Css::make('filament-dashboard-notification-styles', __DIR__ . '/../resources/dist/filament-dashboard-notification.css'),
-            // Js::make('filament-dashboard-notification-scripts', __DIR__ . '/../resources/dist/filament-dashboard-notification.js'),
+            // AlpineComponent::make('filament-announce', __DIR__ . '/../resources/dist/components/filament-announce.js'),
+            Css::make('filament-announce-styles', __DIR__ . '/../resources/dist/filament-announce.css'),
+            // Js::make('filament-announce-scripts', __DIR__ . '/../resources/dist/filament-announce.js'),
         ];
     }
 
@@ -131,7 +131,7 @@ class FilamentDashboardNotificationServiceProvider extends PackageServiceProvide
     protected function getCommands(): array
     {
         return [
-            FilamentDashboardNotificationCommand::class,
+            FilamentAnnounceCommand::class,
         ];
     }
 
@@ -165,7 +165,7 @@ class FilamentDashboardNotificationServiceProvider extends PackageServiceProvide
     protected function getMigrations(): array
     {
         return [
-            'create_filament-dashboard-notification_table',
+            'create_filament-announce_table',
         ];
     }
 }

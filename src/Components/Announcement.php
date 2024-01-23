@@ -1,6 +1,6 @@
 <?php
 
-namespace Rupadana\FilamentDashboardNotification\Components;
+namespace Rupadana\FilamentAnnounce\Components;
 
 use Carbon\CarbonInterface;
 use Filament\Notifications\Notification;
@@ -14,13 +14,13 @@ use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Livewire\Attributes\On;
 use Livewire\Component;
-use Rupadana\FilamentDashboardNotification\FilamentDashboardNotification;
+use Rupadana\FilamentAnnounce\FilamentAnnounce;
 
-class DashboardNotification extends Component
+class Announcement extends Component
 {
     public static ?string $authGuard = null;
 
-    protected static string $view = 'filament-dashboard-notification::dashboard-notification';
+    protected static string $view = 'filament-announce::announce';
 
     protected int | string | array $columnSpan = 2;
 
@@ -170,6 +170,6 @@ class DashboardNotification extends Component
      */
     public function getPollingInterval()
     {
-        return app(FilamentDashboardNotification::class)->getPollingInterval();
+        return app(FilamentAnnounce::class)->getPollingInterval();
     }
 }

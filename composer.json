@@ -1,10 +1,11 @@
 {
     "name": "rupadana/filament-dashboard-notification",
-    "description": "Filament Dashboard Notification",
+    "description": "Filament Announce",
     "keywords": [
         "rupadana",
         "laravel",
-        "filament-dashboard-notification"
+        "filament",
+        "filamentphp"
     ],
     "homepage": "https://github.com/rupadana/filament-dashboard-notification",
     "support": {
