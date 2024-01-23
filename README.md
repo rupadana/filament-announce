@@ -1,9 +1,9 @@
 # Filament Dashboard Notification
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/rupadana/filament-dashboard-notification.svg?style=flat-square)](https://packagist.org/packages/rupadana/filament-dashboard-notification)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/rupadana/filament-dashboard-notification/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/rupadana/filament-dashboard-notification/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/rupadana/filament-dashboard-notification/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/rupadana/filament-dashboard-notification/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/rupadana/filament-dashboard-notification.svg?style=flat-square)](https://packagist.org/packages/rupadana/filament-dashboard-notification)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/rupadana/filament-announce.svg?style=flat-square)](https://packagist.org/packages/rupadana/filament-announce)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/rupadana/filament-announce/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/rupadana/filament-announce/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/rupadana/filament-announce.svg?style=flat-square)](https://packagist.org/packages/rupadana/filament-announce)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/rupadana/filament-announce/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/rupadana/filament-announce/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 
 
 
@@ -14,20 +14,7 @@ This is where your description should go. Limit it to a paragraph or two. Consid
 You can install the package via composer:
 
 ```bash
-composer require rupadana/filament-dashboard-notification
-```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="filament-dashboard-notification-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="filament-dashboard-notification-config"
+composer require rupadana/filament-announce
 ```
 
 Optionally, you can publish the views using
