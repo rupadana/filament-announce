@@ -7,7 +7,7 @@
 
 
 
-An easy way to shout your exceptional offerings to the potential users 🤑... Or some serious pressure bad employees 😡
+An easy way to shout your exceptional offerings to the potential users 🤑... Or some serious pressure to bad employees 😡
 
 ## Installation
 
