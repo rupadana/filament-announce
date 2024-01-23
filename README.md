@@ -46,8 +46,14 @@ return [
 ## Usage
 
 ```php
-$filamentDashboardNotification = new Rupadana\FilamentDashboardNotification();
-echo $filamentDashboardNotification->echoPhrase('Hello, Rupadana!');
+use App\Models\User;
+use Rupadana\FilamentAnnounce\Announce;
+
+Announce::make()
+    ->title('Big News!')
+    ->icon('heroicon-o-megaphone')
+    ->body('Filament can now show very important message to specific users!')
+    ->announceTo(User::all());
 ```
 
 ## Testing
