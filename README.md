@@ -44,6 +44,27 @@ return [
 ```
 
 ## Usage
+You must enable Announce by adding the class to your Filament Panel's plugin() or plugins([]) method:
+
+```php
+use Rupadana\FilamentAnnounce\FilamentAnnouncePlugin;
+
+class CustomersPanelProvider extends PanelProvider
+{
+    public function panel(Panel $panel): Panel
+    {
+        return $panel
+            ...
+            ->plugin(
+                FilamentAnnouncePlugin::make()
+                    ->pollingInterval(30) // optional, by default the polling interval is set to null
+            )
+    }
+}
+
+```
+
+Now you can announce whatever to users:
 
 ```php
 use App\Models\User;
