@@ -2,13 +2,10 @@
 
 namespace Rupadana\FilamentAnnounce\Components;
 
-use Carbon\CarbonInterface;
-use Filament\Notifications\Notification;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -23,8 +20,10 @@ class Announcement extends Component
 
     public function getUnreadNotificationsData()
     {
-        if(!auth()->user()) return [];
-        
+        if (! auth()->user()) {
+            return [];
+        }
+
         return $this->getUnreadNotificationsQuery()->get();
     }
 

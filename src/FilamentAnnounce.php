@@ -3,11 +3,9 @@
 namespace Rupadana\FilamentAnnounce;
 
 use Closure;
-use Filament\Support\Concerns\HasColor;
 
 class FilamentAnnounce
 {
-
     protected string | array | null $color = null;
 
     protected ?string $pollingInterval = null;

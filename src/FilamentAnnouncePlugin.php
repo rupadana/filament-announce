@@ -5,9 +5,6 @@ namespace Rupadana\FilamentAnnounce;
 use Closure;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-use Filament\Support\Assets\Css;
-use Filament\Support\Colors\Color;
-use Filament\Support\Facades\FilamentAsset;
 use Illuminate\Support\Facades\Blade;
 use Livewire\Livewire;
 use Rupadana\FilamentAnnounce\Components\Announcement;
@@ -36,7 +33,7 @@ class FilamentAnnouncePlugin implements Plugin
     public static function make(): static
     {
         return app(static::class)
-        ->defaultColor('primary') ;
+            ->defaultColor('primary');
     }
 
     public function pollingInterval(?string $interval)
@@ -46,7 +43,8 @@ class FilamentAnnouncePlugin implements Plugin
         return $this;
     }
 
-    public function defaultColor(string | array | Closure | null  $color) {
+    public function defaultColor(string | array | Closure | null $color)
+    {
         app(FilamentAnnounce::class)->color($color);
 
         return $this;
