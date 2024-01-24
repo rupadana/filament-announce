@@ -85,6 +85,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## Credits
 
 - [Rupadana](https://github.com/rupadana)
+- [margarizaldi](https://github.com/margarizaldi)
 - [All Contributors](../../contributors)
 
 ## License
