@@ -56,6 +56,7 @@ Announce::make()
     ->title('Big News!')
     ->icon('heroicon-o-megaphone')
     ->body('Filament can now show very important message to specific users!')
+    ->disableCloseButton() // Optional, if you want ur announcement discloseable
     ->announceTo(User::all());
 ```
 
