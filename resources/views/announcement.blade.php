@@ -1,22 +1,16 @@
 @php
     $data = $notification->data;
 
-    $color = $data['color'] ?? $data['iconColor'] ?? $data['status'];
+    $color = $data['color'] ?? ($data['iconColor'] ?? $data['status']);
     $icon = $data['icon'];
     $title = $data['title'];
     $body = $data['body'];
+    $closeButton = $data['closeButton'] ?? true;
 
-    $colorClasses = \Illuminate\Support\Arr::toCssClasses([
-        'flex items-center border border-transparent px-6 py-2 gap-4',
-        'bg-white text-gray-950 dark:bg-white/5 dark:text-white' => $color === 'gray',
-        'bg-custom-600 text-white dark:bg-custom-500' => $color !== 'gray',
-    ]);
+    $colorClasses = \Illuminate\Support\Arr::toCssClasses(['flex items-center border border-transparent px-6 py-2 gap-4', 'bg-white text-gray-950 dark:bg-white/5 dark:text-white' => $color === 'gray', 'bg-custom-600 text-white dark:bg-custom-500' => $color !== 'gray']);
 
     $colorStyles = \Illuminate\Support\Arr::toCssStyles([
-        \Filament\Support\get_color_css_variables(
-            $color,
-            shades: [400, 500, 600],
-        ) => $color !== 'gray',
+        \Filament\Support\get_color_css_variables($color, shades: [400, 500, 600]) => $color !== 'gray',
     ]);
 @endphp
 
@@ -40,6 +34,9 @@
 
 
     <div class="flex items-center">
-        <x-filament::icon-button icon="heroicon-o-x-mark" color="white" x-on:click="$dispatch('markedAnnouncementAsRead', {id: '{{ $notification->id }}'})"/>
+        @if ($closeButton)
+            <x-filament::icon-button icon="heroicon-o-x-mark" color="white"
+                x-on:click="$dispatch('markedAnnouncementAsRead', {id: '{{ $notification->id }}'})" />
+        @endif
     </div>
 </div>
