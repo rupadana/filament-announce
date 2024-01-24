@@ -23,6 +23,8 @@ class Announcement extends Component
 
     public function getUnreadNotificationsData()
     {
+        if(!auth()->user()) return [];
+        
         return $this->getUnreadNotificationsQuery()->get();
     }
 
@@ -67,34 +69,6 @@ class Announcement extends Component
     public function getUser(): Model | Authenticatable | null
     {
         return auth(static::$authGuard)->user();
-    }
-
-    public function getBroadcastChannel(): ?string
-    {
-        $user = $this->getUser();
-
-        if (! $user) {
-            return null;
-        }
-
-        if (method_exists($user, 'receivesBroadcastNotificationsOn')) {
-            return $user->receivesBroadcastNotificationsOn();
-        }
-
-        $userClass = str_replace('\\', '.', $user::class);
-
-        return "{$userClass}.{$user->getKey()}";
-    }
-
-    public function getNotification(DatabaseNotification $notification): Notification
-    {
-        return Notification::fromDatabase($notification)
-            ->date($this->formatNotificationDate($notification->getAttributeValue('created_at')));
-    }
-
-    protected function formatNotificationDate(CarbonInterface $date): string
-    {
-        return $date->diffForHumans();
     }
 
     public function render()

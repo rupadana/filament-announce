@@ -1,10 +1,10 @@
 @php
-    $unreadNotifications = $this->getUnreadNotificationsQuery()->get();
+    $unreadNotifications = $this->getUnreadNotificationsData();
     $pollingInterval = $this->getPollingInterval();
 @endphp
 
 <div
-    @if ($pollingInterval = $this->getPollingInterval())
+    @if ($pollingInterval)
         wire:poll.{{ $pollingInterval }}
     @endif
 >

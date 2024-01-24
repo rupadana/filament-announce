@@ -2,6 +2,8 @@
 
 namespace Rupadana\FilamentAnnounce;
 
+use Filament\Support\Assets\Css;
+use Filament\Support\Facades\FilamentAsset;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -27,5 +29,20 @@ class FilamentAnnounceServiceProvider extends PackageServiceProvider
         $this->app->singleton(FilamentAnnounce::class, function () {
             return new FilamentAnnounce;
         });
+
+        FilamentAsset::register($this->getAssets(), $this->getAssetPackageName());
+    }
+
+    /**
+     * @return array<Asset>
+     */
+    protected function getAssets(): array
+    {
+        return [];
+    }
+
+    protected function getAssetPackageName(): ?string
+    {
+        return 'rupadana/filament-announce';
     }
 }

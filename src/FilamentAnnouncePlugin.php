@@ -2,9 +2,12 @@
 
 namespace Rupadana\FilamentAnnounce;
 
+use Closure;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Filament\Support\Assets\Css;
+use Filament\Support\Colors\Color;
+use Filament\Support\Facades\FilamentAsset;
 use Illuminate\Support\Facades\Blade;
 use Livewire\Livewire;
 use Rupadana\FilamentAnnounce\Components\Announcement;
@@ -22,10 +25,6 @@ class FilamentAnnouncePlugin implements Plugin
             ->renderHook(
                 'panels::body.start',
                 fn (): string => Blade::render('@livewire(\'filament-announce\')'),
-            )
-            ->assets(
-                $this->getAssets(),
-                $this->getAssetPackageName(),
             );
     }
 
@@ -36,7 +35,8 @@ class FilamentAnnouncePlugin implements Plugin
 
     public static function make(): static
     {
-        return app(static::class);
+        return app(static::class)
+        ->defaultColor('primary') ;
     }
 
     public function pollingInterval(?string $interval)
@@ -46,18 +46,9 @@ class FilamentAnnouncePlugin implements Plugin
         return $this;
     }
 
-    /**
-     * @return array<Asset>
-     */
-    protected function getAssets(): array
-    {
-        return [
-            Css::make('filament-announce-styles', __DIR__ . '/../resources/dist/filament-announce.css'),
-        ];
-    }
+    public function defaultColor(string | array | Closure | null  $color) {
+        app(FilamentAnnounce::class)->color($color);
 
-    protected function getAssetPackageName(): ?string
-    {
-        return 'rupadana/filament-announce';
+        return $this;
     }
 }

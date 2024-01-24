@@ -7,7 +7,7 @@
     $body = $data['body'];
 
     $colorClasses = \Illuminate\Support\Arr::toCssClasses([
-        'flex items-center border border-transparent px-6 py-1 gap-4',
+        'flex items-center border border-transparent px-6 py-2 gap-4',
         'bg-white text-gray-950 dark:bg-white/5 dark:text-white' => $color === 'gray',
         'bg-custom-600 text-white dark:bg-custom-500' => $color !== 'gray',
     ]);
