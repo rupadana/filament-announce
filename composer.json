@@ -1,11 +1,12 @@
 {
     "name": "rupadana/filament-announce",
-    "description": "Filament Announce",
+    "description": "An easy way to shout your exceptional offerings to the potential users",
     "keywords": [
         "rupadana",
         "laravel",
         "filament",
-        "filamentphp"
+        "filamentphp",
+        "filament-announce"
     ],
     "homepage": "https://github.com/rupadana/filament-announce",
     "support": {
