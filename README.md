@@ -9,6 +9,8 @@
 
 An easy way to shout your exceptional offerings to the potential users 🤑... Or some serious pressure to bad employees 😡
 
+![](https://res.cloudinary.com/rupadana/image/upload/v1706100163/Screenshot_2024-01-24_at_20.14.43_focxhf.png)
+
 ## Installation
 
 You can install the package via composer:
