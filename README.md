@@ -28,7 +28,7 @@ You must enable Announce by adding the class to your Filament Panel's plugin() o
 
 ```php
 use Rupadana\FilamentAnnounce\FilamentAnnouncePlugin;
-
+use Filament\Support\Colors\Color;
 class CustomersPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
@@ -37,7 +37,9 @@ class CustomersPanelProvider extends PanelProvider
             ...
             ->plugin(
                 FilamentAnnouncePlugin::make()
-                    ->pollingInterval(30) // optional, by default it is set to null
+                    ->pollingInterval('30s') // optional, by default it is set to null
+                    ->defaultColor(Color::Blue) // optional, by default it is set to "primary"
+
             )
     }
 }
@@ -58,9 +60,9 @@ Announce::make()
 ```
 
 ## Todo
-- Can add actions to every announcement
-- Provide a resource/action to send announcement
-- Add banner-like implementations for global announcement
+- [ ] Can add actions to every announcement
+- [ ] Provide a resource/action to send announcement
+- [ ] Add banner-like implementations for global announcement
 
 ## Testing
 
