@@ -10,7 +10,6 @@ use Rupadana\FilamentAnnounce\Notifications\AnnounceNotification;
 
 class Announce extends Notification
 {
-
     protected bool $closeButton = true;
 
     public function announceTo(Model | Authenticatable | Collection | array $users): void
@@ -30,13 +29,14 @@ class Announce extends Notification
         }
     }
 
-    public function disableCloseButton(bool $condition = true) : static
+    public function disableCloseButton(bool $condition = true): static
     {
-        $this->closeButton = !$condition;
+        $this->closeButton = ! $condition;
+
         return $this;
     }
 
-    public function isCloseButton() : bool 
+    public function isCloseButton(): bool
     {
         return $this->closeButton;
     }
@@ -45,7 +45,7 @@ class Announce extends Notification
     {
         return [
             ...parent::toArray(),
-            'closeButton' => $this->isCloseButton()
+            'closeButton' => $this->isCloseButton(),
         ];
     }
 }
