@@ -2,6 +2,15 @@
 
 All notable changes to `filament-dashboard-notification` will be documented in this file.
 
+## 3.1.3 - 2024-01-28
+
+### What's Changed
+
+* add alignment feature by @rupadana in https://github.com/rupadana/filament-announce/pull/7
+* fix php unit by @rupadana in https://github.com/rupadana/filament-announce/pull/8
+
+**Full Changelog**: https://github.com/rupadana/filament-announce/compare/3.1.2...3.1.3
+
 ## 3.1.2 - 2024-01-28
 
 ### What's Changed
