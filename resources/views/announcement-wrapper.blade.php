@@ -1,16 +1,12 @@
-@php
-    $unreadNotifications = $this->getUnreadNotificationsData();
-    $pollingInterval = $this->getPollingInterval();
-@endphp
-
 <div
-    @if ($pollingInterval)
+    @if ($pollingInterval = $this->getPollingInterval())
         wire:poll.{{ $pollingInterval }}
     @endif
 >
-    <div class="flex flex-col">
-        @foreach ($unreadNotifications as $notification)
-            @include('filament-announce::announcement')
-        @endforeach
-    </div>
+    @foreach ($this->getUnreadNotificationsData() as $item)
+        {{-- todo: use blade component instead of @include --}}
+        @include('filament-announce::announcement', [
+            'notification' => $this->getNotification($item),
+        ])
+    @endforeach
 </div>
