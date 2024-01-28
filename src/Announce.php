@@ -2,6 +2,7 @@
 
 namespace Rupadana\FilamentAnnounce;
 
+use Closure;
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Collection;
@@ -10,7 +11,7 @@ use Rupadana\FilamentAnnounce\Notifications\AnnounceNotification;
 
 class Announce extends Notification
 {
-    protected bool $closeButton = true;
+    protected bool | Closure $closeButton = true;
 
     public function announceTo(Model | Authenticatable | Collection | array $users): void
     {
@@ -29,23 +30,31 @@ class Announce extends Notification
         }
     }
 
-    public function disableCloseButton(bool $condition = true): static
+    public function disableCloseButton(bool | Closure $condition = true): static
     {
         $this->closeButton = ! $condition;
 
         return $this;
     }
 
-    public function isCloseButton(): bool
-    {
-        return $this->closeButton;
-    }
-
     public function toArray(): array
     {
         return [
             ...parent::toArray(),
-            'closeButton' => $this->isCloseButton(),
+            'closeButton' => $this->closeButton,
         ];
+    }
+
+    public static function fromArray(array $data): static
+    {
+        $static = parent::fromArray($data);
+        $static->closeButton = $data['closeButton'];
+
+        return $static;
+    }
+
+    public function isClosable(): bool
+    {
+        return (bool) $this->evaluate($this->closeButton);
     }
 }

@@ -6,9 +6,11 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Rupadana\FilamentAnnounce\Announce;
 use Rupadana\FilamentAnnounce\FilamentAnnounce;
 use Rupadana\FilamentAnnounce\Notifications\AnnounceNotification;
 
@@ -25,6 +27,11 @@ class Announcement extends Component
         }
 
         return $this->getUnreadNotificationsQuery()->get();
+    }
+
+    public function getNotification(DatabaseNotification $notification): Announce
+    {
+        return Announce::fromDatabase($notification);
     }
 
     #[On('markedAnnouncementAsRead')]

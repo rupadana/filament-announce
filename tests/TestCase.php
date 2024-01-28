@@ -1,6 +1,6 @@
 <?php
 
-namespace Rupadana\FilamentDashboardNotification\Tests;
+namespace Rupadana\FilamentAnnounce\Tests;
 
 use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
@@ -9,15 +9,13 @@ use Filament\FilamentServiceProvider;
 use Filament\Forms\FormsServiceProvider;
 use Filament\Infolists\InfolistsServiceProvider;
 use Filament\Notifications\NotificationsServiceProvider;
-use Filament\SpatieLaravelSettingsPluginServiceProvider;
-use Filament\SpatieLaravelTranslatablePluginServiceProvider;
 use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Rupadana\FilamentDashboardNotification\FilamentDashboardNotificationServiceProvider;
+use Rupadana\FilamentAnnounce\FilamentAnnounceServiceProvider;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
 
 class TestCase extends Orchestra
@@ -43,12 +41,10 @@ class TestCase extends Orchestra
             InfolistsServiceProvider::class,
             LivewireServiceProvider::class,
             NotificationsServiceProvider::class,
-            SpatieLaravelSettingsPluginServiceProvider::class,
-            SpatieLaravelTranslatablePluginServiceProvider::class,
             SupportServiceProvider::class,
             TablesServiceProvider::class,
             WidgetsServiceProvider::class,
-            FilamentDashboardNotificationServiceProvider::class,
+            FilamentAnnounceServiceProvider::class,
         ];
     }
 
