@@ -8,6 +8,7 @@ use Filament\Panel;
 use Illuminate\Support\Facades\Blade;
 use Livewire\Livewire;
 use Rupadana\FilamentAnnounce\Components\Announcement;
+use Rupadana\FilamentAnnounce\Resources\AnnouncementResource;
 
 class FilamentAnnouncePlugin implements Plugin
 {
@@ -22,7 +23,10 @@ class FilamentAnnouncePlugin implements Plugin
             ->renderHook(
                 'panels::body.start',
                 fn (): string => Blade::render('@livewire(\'filament-announce\')'),
-            );
+            )
+            ->resources([
+                AnnouncementResource::class
+            ]);
     }
 
     public function boot(Panel $panel): void
