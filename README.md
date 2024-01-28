@@ -7,7 +7,7 @@
 
 
 
-An easy way to shout your exceptional offerings to the potential users 🤑... Or some serious pressure to bad employees 😡
+The easiest way to shout announcements in filament!
 
 ![](https://res.cloudinary.com/rupadana/image/upload/v1706100163/Screenshot_2024-01-24_at_20.14.43_focxhf.png)
 
@@ -26,7 +26,7 @@ php artisan vendor:publish --tag="filament-announce-views"
 ```
 
 ## Usage
-You must enable Announce by adding the class to your Filament Panel's plugin() or plugins([]) method:
+You must enable Announce by adding `FilamentAnnouncePlugin` class to your Filament Panel's plugin() or plugins([]) method:
 
 ```php
 use Rupadana\FilamentAnnounce\FilamentAnnouncePlugin;
@@ -62,12 +62,39 @@ Announce::make()
     ->announceTo(User::all());
 ```
 
+## Title and Body Alignment
 
-## Add an action to announce
+By default, the alignments will be `start` and you might want to adjust them:
+
+```php
+use App\Models\User;
+use Filament\Support\Enums\Alignment;
+use Rupadana\FilamentAnnounce\Announce;
+
+Announce::make()
+    ->title('Big News!')
+    ->icon('heroicon-o-megaphone')
+    ->body('Filament can now show very important message to specific users!')
+    ->alignment(Align::Center) // this will set both title and body alignments (common alignment)
+    ->titleAlignment(Align::Start) // this will set title alignment and take precedence over common alignment methods
+    ->bodyAlignment(Align::Start) // this will set body alignment and take precedence over common alignment methods
+    ->actions([
+        Action::make('view')
+            ->button(),
+        Action::make('undo')
+            ->color('gray'),
+    ])
+    ->announceTo(User::all());
+```
+You can also use `alignStart()`, `alignCenter()`, `alignEnd()`, `alignJustify()`, `alignBetween()`, `alignLeft()` and `alignRight()` for your convenience.
+
+
+## Add Actions to Announce
 
 ![](https://private-user-images.githubusercontent.com/26832856/300244433-61677a79-9706-41c4-be86-19173484f943.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDY0Mzc3MzEsIm5iZiI6MTcwNjQzNzQzMSwicGF0aCI6Ii8yNjgzMjg1Ni8zMDAyNDQ0MzMtNjE2NzdhNzktOTcwNi00MWM0LWJlODYtMTkxNzM0ODRmOTQzLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAxMjglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMTI4VDEwMjM1MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWU2NTRjZjIyYjA3NjcwMDExODJjZTJjYzQwMTVmMDU2OTk4YWM0N2EyMWY4MjI1MjA4MmNmZmQzNTE2NWU2ZjImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.x16B1wDTY2klrlWWdeWo6LK3O82E3_3i89uetbiRYl4)
 
-cause of Announce is extend of Announce, you can use Filament Notification Action
+
+Since Announce extends Filament Notification, you can add Filament Notification Actions to your announcements:
 
 ```php
 use App\Models\User;

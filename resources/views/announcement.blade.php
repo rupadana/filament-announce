@@ -1,8 +1,20 @@
 @php
+    use Filament\Support\Enums\Alignment;
+
+    $titleAlignment = $notification->getTitleAlignment();
+    $bodyAlignment = $notification->getBodyAlignment();
     $title = $notification->getTitle();
     $body = $notification->getBody();
     $actions = $notification->getActions();
     $color = $notification->getColor();
+
+    if (! $titleAlignment instanceof Alignment) {
+        $titleAlignment = filled($titleAlignment) ? (Alignment::tryFrom($titleAlignment) ?? $titleAlignment) : null;
+    }
+
+    if (! $bodyAlignment instanceof Alignment) {
+        $bodyAlignment = filled($bodyAlignment) ? (Alignment::tryFrom($bodyAlignment) ?? $bodyAlignment) : null;
+    }
 
     $colorClasses = \Illuminate\Support\Arr::toCssClasses(['flex items-center border border-transparent px-6 py-2 gap-4', 'bg-white text-gray-950 dark:bg-white/5 dark:text-white' => $color === 'gray', 'bg-custom-600 text-white dark:bg-custom-500' => $color !== 'gray']);
 
@@ -21,7 +33,16 @@
         'w-full flex-1',
     ])>
         @if ($title && ! $body && $actions)
-            <div class="flex flex-row flex-wrap items-center gap-4 leading-none">
+            <div @class([
+                'flex flex-row flex-wrap items-center gap-4 leading-none',
+                match ($titleAlignment) {
+                    Alignment::Start, Alignment::Left => 'justify-start',
+                    Alignment::Center => 'justify-center',
+                    Alignment::End, Alignment::Right => 'justify-end',
+                    Alignment::Between, Alignment::Justify => 'justify-between',
+                    default => $titleAlignment,
+                },
+            ])>
                 <h5 class="font-semibold">{{ $title }}</h5>
 
                 <x-filament-notifications::actions
@@ -30,7 +51,16 @@
                 />
             </div>
         @elseif (! $title && $body && $actions)
-            <div class="flex flex-row flex-wrap items-center gap-4 leading-none">
+            <div @class([
+                'flex flex-row flex-wrap items-center gap-4 leading-none',
+                match ($bodyAlignment) {
+                    Alignment::Start, Alignment::Left => 'justify-start',
+                    Alignment::Center => 'justify-center',
+                    Alignment::End, Alignment::Right => 'justify-end',
+                    Alignment::Between, Alignment::Justify => 'justify-between',
+                    default => $bodyAlignment,
+                },
+            ])>
                 <span class="text-sm">{{ $body }}</span>
 
                 <x-filament-notifications::actions
@@ -39,8 +69,29 @@
                 />
             </div>
         @else
-            <h5 class="font-semibold">{{ $title }}</h5>
-            <div class="flex flex-row flex-wrap items-center gap-4 leading-none">
+            <div @class([
+                match ($titleAlignment) {
+                    Alignment::Start => 'text-start',
+                    Alignment::Center => 'text-center',
+                    Alignment::End => 'text-end',
+                    Alignment::Left => 'text-left',
+                    Alignment::Right => 'text-right',
+                    Alignment::Justify, Alignment::Between => 'text-justify',
+                    default => $titleAlignment,
+                },
+            ])>
+                <h5 class="font-semibold">{{ $title }}</h5>
+            </div>
+            <div @class([
+                'flex flex-row flex-wrap items-center gap-4 leading-none',
+                match ($bodyAlignment) {
+                    Alignment::Start, Alignment::Left => 'justify-start',
+                    Alignment::Center => 'justify-center',
+                    Alignment::End, Alignment::Right => 'justify-end',
+                    Alignment::Between, Alignment::Justify => 'justify-between',
+                    default => $bodyAlignment,
+                },
+            ])>
                 <span class="text-sm">{{ $body }}</span>
 
                 @if ($actions)
