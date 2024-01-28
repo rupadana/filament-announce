@@ -58,6 +58,10 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true,
             "phpstan/extension-installer": true
+        },
+        "platform": {
+            "ext-pcntl": "8.0",
+            "ext-posix": "8.0"
         }
     },
     "extra": {
