@@ -62,8 +62,33 @@ Announce::make()
     ->announceTo(User::all());
 ```
 
+
+## Add an action to announce
+
+cause of Announce is extend of Announce, you can use Filament Notification Action
+
+```php
+use App\Models\User;
+use Rupadana\FilamentAnnounce\Announce;
+
+Announce::make()
+    ->title('Big News!')
+    ->icon('heroicon-o-megaphone')
+    ->body('Filament can now show very important message to specific users!')
+    ->actions([
+        Action::make('view')
+            ->button(),
+        Action::make('undo')
+            ->color('gray'),
+    ])
+    ->announceTo(User::all());
+```
+
+Read more about [Notification Action](https://filamentphp.com/docs/3.x/notifications/sending-notifications#adding-actions-to-notifications).
+
+
 ## Todo
-- [ ] Can add actions to every announcement
+- [x] Can add actions to every announcement
 - [ ] Provide a resource/action to send announcement
 - [ ] Add banner-like implementations for global announcement
 
