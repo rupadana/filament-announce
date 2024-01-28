@@ -111,10 +111,14 @@ Announce::make()
 
 Read more about [Notification Action](https://filamentphp.com/docs/3.x/notifications/sending-notifications#adding-actions-to-notifications).
 
+## Announcement Resource
+
+![](https://github.com/rupadana/filament-announce/assets/34137674/af4e43a3-0093-49ab-b493-504d7607fb2b)
+
 
 ## Todo
 - [x] Can add actions to every announcement
-- [ ] Provide a resource/action to send announcement
+- [x] Provide a resource/action to send announcement
 - [ ] Add banner-like implementations for global announcement
 
 ## Testing
