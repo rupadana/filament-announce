@@ -22,15 +22,15 @@ class FilamentAnnounceServiceProvider extends PackageServiceProvider
         $package->name(static::$name)
             ->hasViews('filament-announce')
             ->hasConfigFile('filament-announce');
-        
-        if(app()->runningInConsole()) {
+
+        if (app()->runningInConsole()) {
             $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
             $this->publishes([
-                __DIR__ . '/Resources' => app_path('/Filament/Resources')
+                __DIR__ . '/Resources' => app_path('/Filament/Resources'),
             ], 'filament-announce-resource');
         }
-            
+
     }
 
     public function packageRegistered(): void

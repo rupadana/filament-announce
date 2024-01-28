@@ -10,16 +10,16 @@ class Announcement extends Model
     use HasFactory;
 
     protected $fillable = [
-        "name",
-        "color",
-        "custom_color",
-        "title",
-        "body",
-        "icon",
-        "users"
+        'name',
+        'color',
+        'custom_color',
+        'title',
+        'body',
+        'icon',
+        'users',
     ];
 
     protected $casts = [
-        'users' => 'array'
+        'users' => 'array',
     ];
 }

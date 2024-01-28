@@ -2,8 +2,6 @@
 
 namespace Rupadana\FilamentAnnounce\Resources;
 
-use Rupadana\FilamentAnnounce\Resources\AnnouncementResource\Pages;
-use Rupadana\FilamentAnnounce\Models\Announcement;
 use App\Models\User;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Select;
@@ -18,6 +16,8 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Guava\FilamentIconPicker\Forms\IconPicker;
 use Guava\FilamentIconPicker\Tables\IconColumn;
+use Rupadana\FilamentAnnounce\Models\Announcement;
+use Rupadana\FilamentAnnounce\Resources\AnnouncementResource\Pages;
 
 class AnnouncementResource extends Resource
 {
@@ -42,7 +42,7 @@ class AnnouncementResource extends Resource
                 Select::make('color')
                     ->options([
                         ...collect(FilamentColor::getColors())->map(fn ($value, $key) => ucfirst($key))->toArray(),
-                        'custom' => 'Custom'
+                        'custom' => 'Custom',
                     ])
                     ->live(),
                 ColorPicker::make('custom_color')
@@ -52,10 +52,10 @@ class AnnouncementResource extends Resource
                 Select::make('users')
                     ->options([
                         'all' => 'all',
-                        ...User::all()->pluck('name', 'id')
+                        ...User::all()->pluck('name', 'id'),
                     ])
                     ->multiple()
-                    ->required()
+                    ->required(),
             ]);
     }
 
@@ -66,7 +66,7 @@ class AnnouncementResource extends Resource
                 TextColumn::make('name'),
                 TextColumn::make('title'),
                 TextColumn::make('body'),
-                IconColumn::make('icon')
+                IconColumn::make('icon'),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
@@ -96,7 +96,6 @@ class AnnouncementResource extends Resource
     {
         return auth()->user()->hasRole(config('filament-announce.can_access.role') ?? []);
     }
-
 
     // public static function getNavigationLabel(): string
     // {

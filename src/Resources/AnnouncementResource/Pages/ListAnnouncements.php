@@ -2,9 +2,9 @@
 
 namespace Rupadana\FilamentAnnounce\Resources\AnnouncementResource\Pages;
 
-use Rupadana\FilamentAnnounce\Resources\AnnouncementResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
+use Rupadana\FilamentAnnounce\Resources\AnnouncementResource;
 
 class ListAnnouncements extends ListRecords
 {

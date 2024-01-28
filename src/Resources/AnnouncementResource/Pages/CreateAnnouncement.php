@@ -2,12 +2,11 @@
 
 namespace Rupadana\FilamentAnnounce\Resources\AnnouncementResource\Pages;
 
-use Rupadana\FilamentAnnounce\Resources\AnnouncementResource;
 use App\Models\User;
-use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 use Filament\Support\Facades\FilamentColor;
 use Rupadana\FilamentAnnounce\Announce;
+use Rupadana\FilamentAnnounce\Resources\AnnouncementResource;
 
 class CreateAnnouncement extends CreateRecord
 {
@@ -15,7 +14,7 @@ class CreateAnnouncement extends CreateRecord
 
     protected function getCreatedNotificationTitle(): ?string
     {
-        return "Announcement successfully created!";
+        return 'Announcement successfully created!';
     }
 
     public function afterCreate()
@@ -34,16 +33,22 @@ class CreateAnnouncement extends CreateRecord
 
         $announce = Announce::make();
 
-        if ($title) $announce->title($title);
-        if ($body) $announce->body($body);
-        if ($icon) $announce->icon($icon);
+        if ($title) {
+            $announce->title($title);
+        }
+        if ($body) {
+            $announce->body($body);
+        }
+        if ($icon) {
+            $announce->icon($icon);
+        }
 
         if ($color && $color == 'custom') {
             $announce->color(str($custom_color)->remove('rgb(')->remove(')'));
-        } else {  
+        } else {
             $announce->color(FilamentColor::getColors()[$color]['500']);
         }
-        
+
         $announce->announceTo($users);
     }
 }

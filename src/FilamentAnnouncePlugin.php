@@ -25,7 +25,7 @@ class FilamentAnnouncePlugin implements Plugin
                 fn (): string => Blade::render('@livewire(\'filament-announce\')'),
             )
             ->resources([
-                AnnouncementResource::class
+                AnnouncementResource::class,
             ]);
     }
 

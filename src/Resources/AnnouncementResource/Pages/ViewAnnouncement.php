@@ -2,9 +2,8 @@
 
 namespace Rupadana\FilamentAnnounce\Resources\AnnouncementResource\Pages;
 
-use Rupadana\FilamentAnnounce\Resources\AnnouncementResource;
-use Filament\Actions;
 use Filament\Resources\Pages\ViewRecord;
+use Rupadana\FilamentAnnounce\Resources\AnnouncementResource;
 
 class ViewAnnouncement extends ViewRecord
 {
