@@ -19,11 +19,34 @@ You can install the package via composer:
 composer require rupadana/filament-announce
 ```
 
+
+```bash
+php artisan migrate
+```
+
 Optionally, you can publish the views using
 
 ```bash
 php artisan vendor:publish --tag="filament-announce-views"
 ```
+
+publish config
+
+```bash
+php artisan vendor:publish --tag="filament-announce-config"
+```
+
+```php
+return [
+    'navigation' => [
+        'group' => '',
+    ],
+    'can_access' => [
+        'role' => ['super_admin']
+    ]
+];
+```
+
 
 ## Usage
 You must enable Announce by adding the class to your Filament Panel's plugin() or plugins([]) method:
