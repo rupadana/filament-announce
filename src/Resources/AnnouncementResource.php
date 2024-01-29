@@ -47,6 +47,7 @@ class AnnouncementResource extends Resource
                     ->live(),
                 ColorPicker::make('custom_color')
                     ->hidden(fn (Get $get) => $get('color') != 'custom')
+                    ->requiredIf('color', 'custom')
                     ->rgb(),
 
                 Select::make('users')
@@ -96,9 +97,4 @@ class AnnouncementResource extends Resource
     {
         return auth()->user()->hasRole(config('filament-announce.can_access.role') ?? []);
     }
-
-    // public static function getNavigationLabel(): string
-    // {
-    //     return config('filament-announce.navigation.label');
-    // }
 }
