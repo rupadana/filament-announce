@@ -97,5 +97,4 @@ class AnnouncementResource extends Resource
     {
         return auth()->user()->hasRole(config('filament-announce.can_access.role') ?? []);
     }
-
 }
