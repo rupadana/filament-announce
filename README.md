@@ -147,6 +147,7 @@ Read more about [Notification Action](https://filamentphp.com/docs/3.x/notificat
 - [x] Can add actions to every announcement
 - [x] Provide a resource/action to send announcement
 - [ ] Add banner-like implementations for global announcement
+- [ ] Set end date or time so it will disapear automaticly
 
 ## Testing
 
