@@ -6,7 +6,7 @@
 
 
 
-The easiest way to shout announcements in filament!
+The easiest way to shout announcements in Filament!
 
 ![](https://res.cloudinary.com/rupadana/image/upload/v1706100163/Screenshot_2024-01-24_at_20.14.43_focxhf.png)
 
