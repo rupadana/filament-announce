@@ -14,6 +14,7 @@ use Filament\Support\Facades\FilamentColor;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Filament\Forms\Components\Checkbox;
 use Guava\FilamentIconPicker\Forms\IconPicker;
 use Guava\FilamentIconPicker\Tables\IconColumn;
 use Rupadana\FilamentAnnounce\Models\Announcement;
@@ -50,13 +51,15 @@ class AnnouncementResource extends Resource
                     ->requiredIf('color', 'custom')
                     ->rgb(),
 
-                Select::make('users')
-                    ->options([
-                        'all' => 'all',
-                        ...User::all()->pluck('name', 'id'),
-                    ])
+                 Select::make('users')
+                    ->options(User::pluck('name', 'id')->toArray())
                     ->multiple()
                     ->required(),
+
+                Checkbox::make('all')
+                    ->label('All users')
+                    ->default(false)
+                    ->requiredIf('users', 'all'),
             ]);
     }
 
