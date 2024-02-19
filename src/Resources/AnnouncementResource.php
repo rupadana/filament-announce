@@ -103,6 +103,10 @@ class AnnouncementResource extends Resource
 
     public static function canAccess(): bool
     {
-        return auth()->user()->hasRole(config('filament-announce.can_access.role') ?? []);
+        if(method_exists(auth()->user(), 'hasRole')) {
+            return auth()->user()->hasRole(config('filament-announce.can_access.role') ?? []);
+        } 
+
+        return true;
     }
 }
