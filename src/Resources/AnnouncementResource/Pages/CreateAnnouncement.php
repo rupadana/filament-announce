@@ -29,7 +29,7 @@ class CreateAnnouncement extends CreateRecord
         $isForAll = $record->all;
 
         $users = $isForAll ? User::all() : User::query()->whereIn('id', $record->users)->get();
-        
+
         $announce = Announce::make();
 
         if ($title) {

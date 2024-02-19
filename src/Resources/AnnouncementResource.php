@@ -8,7 +8,6 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
@@ -46,18 +45,18 @@ class AnnouncementResource extends Resource
                         IconPicker::make('icon'),
                         Select::make('color')
                             ->options([
-                                ...collect(FilamentColor::getColors())->map(fn($value, $key) => ucfirst($key))->toArray(),
+                                ...collect(FilamentColor::getColors())->map(fn ($value, $key) => ucfirst($key))->toArray(),
                                 'custom' => 'Custom',
                             ])
                             ->live(),
                         ColorPicker::make('custom_color')
-                            ->hidden(fn(Get $get) => $get('color') != 'custom')
+                            ->hidden(fn (Get $get) => $get('color') != 'custom')
                             ->requiredIf('color', 'custom')
                             ->rgb(),
 
                         Select::make('users')
                             ->options(User::pluck('name', 'id')->toArray())
-                            ->hidden(fn(Get $get) => $get('all') == true)
+                            ->hidden(fn (Get $get) => $get('all') == true)
                             ->multiple()
                             ->required(),
                     ])->columns(2),
