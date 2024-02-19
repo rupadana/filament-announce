@@ -2,6 +2,20 @@
 
 All notable changes to `filament-dashboard-notification` will be documented in this file.
 
+## 3.1.5 - 2024-02-19
+
+### What's Changed
+
+* Filament Plugin review by @saade in https://github.com/rupadana/filament-announce/pull/10
+* User ID mismatch issue by @Rizayev in https://github.com/rupadana/filament-announce/pull/11
+
+### New Contributors
+
+* @saade made their first contribution in https://github.com/rupadana/filament-announce/pull/10
+* @Rizayev made their first contribution in https://github.com/rupadana/filament-announce/pull/11
+
+**Full Changelog**: https://github.com/rupadana/filament-announce/compare/3.1.4...3.1.5
+
 ## 3.1.4 - 2024-01-29
 
 ### What's Changed
