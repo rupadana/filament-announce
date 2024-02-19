@@ -58,8 +58,7 @@ class AnnouncementResource extends Resource
 
                 Checkbox::make('all')
                     ->label('All users')
-                    ->default(false)
-                    ->requiredIf('users', 'all'),
+                    ->default(false),
             ]);
     }
 
