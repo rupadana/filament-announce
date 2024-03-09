@@ -97,4 +97,9 @@ class AnnouncementResource extends Resource
     {
         return auth()->user()->hasRole(config('filament-announce.can_access.role') ?? []);
     }
+
+    public static function getNavigationSort(): ?int
+    {
+        return config('filament-announce.navigation.sort') ?? -1;
+    }
 }

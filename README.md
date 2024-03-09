@@ -39,6 +39,7 @@ php artisan vendor:publish --tag="filament-announce-config"
 return [
     'navigation' => [
         'group' => '',
+        'sort' => 1
     ],
     'can_access' => [
         'role' => ['super_admin']
