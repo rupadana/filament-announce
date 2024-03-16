@@ -20,6 +20,7 @@ composer require rupadana/filament-announce
 
 
 ```bash
+php artisan make:notifications-table
 php artisan migrate
 ```
 
