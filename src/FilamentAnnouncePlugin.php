@@ -5,6 +5,7 @@ namespace Rupadana\FilamentAnnounce;
 use Closure;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
+use Filament\View\PanelsRenderHook;
 use Illuminate\Support\Facades\Blade;
 use Livewire\Livewire;
 use Rupadana\FilamentAnnounce\Components\Announcement;
@@ -21,7 +22,7 @@ class FilamentAnnouncePlugin implements Plugin
     {
         $panel
             ->renderHook(
-                'panels::body.start',
+                PanelsRenderHook::BODY_START,
                 fn (): string => Blade::render('@livewire(\'filament-announce\')'),
             )
             ->resources([
