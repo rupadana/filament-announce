@@ -2,6 +2,18 @@
 
 All notable changes to `filament-dashboard-notification` will be documented in this file.
 
+## 3.2.1 - 2024-03-16
+
+### What's Changed
+
+* Bump ramsey/composer-install from 2 to 3 by @dependabot in https://github.com/rupadana/filament-announce/pull/16
+
+### New Contributors
+
+* @dependabot made their first contribution in https://github.com/rupadana/filament-announce/pull/16
+
+**Full Changelog**: https://github.com/rupadana/filament-announce/compare/3.2.0...3.2.1
+
 ## 3.2.0 - 2024-03-16
 
 **Full Changelog**: https://github.com/rupadana/filament-announce/compare/3.1.8...3.2.0
