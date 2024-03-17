@@ -13,9 +13,18 @@ use Rupadana\FilamentAnnounce\Resources\AnnouncementResource;
 
 class FilamentAnnouncePlugin implements Plugin
 {
+    protected string $resource = AnnouncementResource::class;
+    
     public function getId(): string
     {
         return 'filament-announce';
+    }
+
+    public function usingResource(string $resource): static
+    {
+        $this->resource = $resource;
+
+        return $this;
     }
 
     public function register(Panel $panel): void
@@ -26,7 +35,7 @@ class FilamentAnnouncePlugin implements Plugin
                 fn (): string => Blade::render('@livewire(\'filament-announce\')'),
             )
             ->resources([
-                AnnouncementResource::class,
+                $this->resource,
             ]);
     }
 
