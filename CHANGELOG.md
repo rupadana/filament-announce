@@ -2,6 +2,18 @@
 
 All notable changes to `filament-dashboard-notification` will be documented in this file.
 
+## 3.2.2 - 2024-03-17
+
+### What's Changed
+
+* Add usingResource method by @CharlieEtienne in https://github.com/rupadana/filament-announce/pull/19
+
+### New Contributors
+
+* @CharlieEtienne made their first contribution in https://github.com/rupadana/filament-announce/pull/19
+
+**Full Changelog**: https://github.com/rupadana/filament-announce/compare/3.2.1...3.2.2
+
 ## 3.2.1 - 2024-03-16
 
 ### What's Changed
