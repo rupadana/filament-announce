@@ -14,7 +14,7 @@ use Rupadana\FilamentAnnounce\Resources\AnnouncementResource;
 class FilamentAnnouncePlugin implements Plugin
 {
     protected string $resource = AnnouncementResource::class;
-    
+
     public function getId(): string
     {
         return 'filament-announce';
