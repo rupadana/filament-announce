@@ -71,6 +71,28 @@ class CustomersPanelProvider extends PanelProvider
 }
 
 ```
+To override the plugins announcementResource with your own custom resource, you should append `usingResource` method when registering the plugin:
+
+```php
+use Rupadana\FilamentAnnounce\FilamentAnnouncePlugin;
+use Filament\Support\Colors\Color;
+class CustomersPanelProvider extends PanelProvider
+{
+    public function panel(Panel $panel): Panel
+    {
+        return $panel
+            ...
+            ->plugin(
+                FilamentAnnouncePlugin::make()
+                    ->usingResource(MyCustomAnnouncementResource::class)
+                    ->pollingInterval('30s') // optional, by default it is set to null
+                    ->defaultColor(Color::Blue) // optional, by default it is set to "primary"
+
+            )
+    }
+}
+
+```
 
 Now you can announce whatever to users:
 
