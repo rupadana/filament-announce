@@ -26,10 +26,9 @@ class CreateAnnouncement extends CreateRecord
         $icon = $record->icon;
         $title = $record->title;
         $body = $record->body;
-
-        $isNotifyToAll = in_array('all', $record->users);
-
-        $users = $isNotifyToAll ? User::all() : User::query()->whereIn('id', $record->users)->get();
+        $isForAll = $record->all_users;
+  
+        $users = $isForAll ? User::all() : User::query()->whereIn('id', $record->users)->get();
 
         $announce = Announce::make();
 

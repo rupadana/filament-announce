@@ -17,6 +17,7 @@ class Announcement extends Model
         'body',
         'icon',
         'users',
+        'all_users'
     ];
 
     protected $casts = [
