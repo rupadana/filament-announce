@@ -51,10 +51,7 @@ class AnnouncementResource extends Resource
                     ->rgb(),
 
                 Select::make('users')
-                    ->options([
-                        'all' => 'all',
-                        ...User::all()->pluck('name', 'id'),
-                    ])
+                    ->options(['all' => 'all'] + User::all()->pluck('name', 'id')->toArray())
                     ->multiple()
                     ->required(),
             ]);
