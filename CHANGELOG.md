@@ -2,6 +2,20 @@
 
 All notable changes to `filament-dashboard-notification` will be documented in this file.
 
+## 3.2.3 - 2024-03-21
+
+### What's Changed
+
+* Update README.md by @hussain4real in https://github.com/rupadana/filament-announce/pull/20
+* Bump tsickert/discord-webhook from 5.3.0 to 5.4.0 by @dependabot in https://github.com/rupadana/filament-announce/pull/21
+* Replace spread operator with union operator by @CharlieEtienne in https://github.com/rupadana/filament-announce/pull/22
+
+### New Contributors
+
+* @hussain4real made their first contribution in https://github.com/rupadana/filament-announce/pull/20
+
+**Full Changelog**: https://github.com/rupadana/filament-announce/compare/3.2.2...3.2.3
+
 ## 3.2.2 - 2024-03-17
 
 ### What's Changed
