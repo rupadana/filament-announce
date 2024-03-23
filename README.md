@@ -20,7 +20,7 @@ composer require rupadana/filament-announce
 
 
 ```bash
-php artisan make:notifications-table
+php artisan notifications:table
 php artisan migrate
 ```
 
@@ -121,9 +121,9 @@ Announce::make()
     ->title('Big News!')
     ->icon('heroicon-o-megaphone')
     ->body('Filament can now show very important message to specific users!')
-    ->alignment(Align::Center) // this will set both title and body alignments (common alignment)
-    ->titleAlignment(Align::Start) // this will set title alignment and take precedence over common alignment methods
-    ->bodyAlignment(Align::Start) // this will set body alignment and take precedence over common alignment methods
+    ->alignment(Alignment::Center) // this will set both title and body alignments (common alignment)
+    ->titleAlignment(Alignment::Start) // this will set title alignment and take precedence over common alignment methods
+    ->bodyAlignment(Alignment::Start) // this will set body alignment and take precedence over common alignment methods
     ->actions([
         Action::make('view')
             ->button(),
