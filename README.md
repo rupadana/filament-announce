@@ -18,9 +18,17 @@ You can install the package via composer:
 composer require rupadana/filament-announce
 ```
 
+```bash
+# Laravel 11 and higher
+php artisan make:notifications-table
+
+# Laravel 10
+php artisan notifications:table
+```
+
+Run migration
 
 ```bash
-php artisan notifications:table
 php artisan migrate
 ```
 
