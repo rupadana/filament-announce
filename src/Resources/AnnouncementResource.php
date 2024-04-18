@@ -31,28 +31,34 @@ class AnnouncementResource extends Resource
             ->schema([
                 TextInput::make('name')
                     ->minLength(5)
-                    ->required(),
+                    ->required()
+                    ->translateLabel(),
                 TextInput::make('title')
                     ->minLength(5)
-                    ->required(),
+                    ->required()
+                    ->translateLabel(),
                 Textarea::make('body')
                     ->minLength(20)
-                    ->required(),
+                    ->required()
+                    ->translateLabel(),
                 IconPicker::make('icon'),
                 Select::make('color')
                     ->options([
                         ...collect(FilamentColor::getColors())->map(fn ($value, $key) => ucfirst($key))->toArray(),
                         'custom' => 'Custom',
                     ])
+                    ->translateLabel()
                     ->live(),
                 ColorPicker::make('custom_color')
                     ->hidden(fn (Get $get) => $get('color') != 'custom')
                     ->requiredIf('color', 'custom')
-                    ->rgb(),
+                    ->rgb()
+                    ->translateLabel(),
 
                 Select::make('users')
                     ->options(['all' => 'all'] + User::all()->pluck('name', 'id')->toArray())
                     ->multiple()
+                    ->translateLabel()
                     ->required(),
             ]);
     }
@@ -61,10 +67,14 @@ class AnnouncementResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
-                TextColumn::make('title'),
-                TextColumn::make('body'),
-                IconColumn::make('icon'),
+                TextColumn::make('name')
+                    ->translateLabel(),
+                TextColumn::make('title')
+                    ->translateLabel(),
+                TextColumn::make('body')
+                    ->translateLabel(),
+                IconColumn::make('icon')
+                    ->translateLabel(),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
