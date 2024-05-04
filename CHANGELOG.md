@@ -2,6 +2,19 @@
 
 All notable changes to `filament-dashboard-notification` will be documented in this file.
 
+## 3.2.4 - 2024-05-04
+
+### What's Changed
+
+* Update README.md by @cenksen in https://github.com/rupadana/filament-announce/pull/23
+* feat: add translateLabel to resource component by @rupadana in https://github.com/rupadana/filament-announce/pull/29
+
+### New Contributors
+
+* @cenksen made their first contribution in https://github.com/rupadana/filament-announce/pull/23
+
+**Full Changelog**: https://github.com/rupadana/filament-announce/compare/3.2.3...3.2.4
+
 ## 3.2.3 - 2024-03-21
 
 ### What's Changed
