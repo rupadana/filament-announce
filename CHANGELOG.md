@@ -2,6 +2,18 @@
 
 All notable changes to `filament-dashboard-notification` will be documented in this file.
 
+## 3.2.5 - 2024-06-21
+
+### What's Changed
+
+* Feature/add metadata by @NicholasMartens in https://github.com/rupadana/filament-announce/pull/32
+
+### New Contributors
+
+* @NicholasMartens made their first contribution in https://github.com/rupadana/filament-announce/pull/32
+
+**Full Changelog**: https://github.com/rupadana/filament-announce/compare/3.2.4...3.2.5
+
 ## 3.2.4 - 2024-05-04
 
 ### What's Changed
