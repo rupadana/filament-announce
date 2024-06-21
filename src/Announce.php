@@ -21,15 +21,15 @@ class Announce extends Notification
 
     protected Alignment | string | Closure | null $bodyAlignment = null;
 
-    protected array | null $metadata = null;
+    protected ?array $metadata = null;
 
     public function announceTo(Model | Authenticatable | Collection | array $users): void
     {
-        if (!$this->getColor()) {
+        if (! $this->getColor()) {
             $this->color(app(FilamentAnnounce::class)->getColor());
         }
 
-        if (!is_iterable($users)) {
+        if (! is_iterable($users)) {
             $users = [$users];
         }
 
@@ -57,7 +57,7 @@ class Announce extends Notification
 
     public function disableCloseButton(bool | Closure $condition = true): static
     {
-        $this->closeButton = !$condition;
+        $this->closeButton = ! $condition;
 
         return $this;
     }
@@ -90,7 +90,7 @@ class Announce extends Notification
     {
         $static = parent::fromArray($data);
 
-        $static->disableCloseButton(!$data['closeButton']);
+        $static->disableCloseButton(! $data['closeButton']);
         $static->titleAlignment($data['titleAlignment'] ?? null);
         $static->bodyAlignment($data['bodyAlignment'] ?? null);
 
