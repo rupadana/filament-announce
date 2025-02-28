@@ -2,6 +2,23 @@
 
 All notable changes to `filament-dashboard-notification` will be documented in this file.
 
+## 3.2.6 - 2025-02-28
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot in https://github.com/rupadana/filament-announce/pull/33
+* Update issue template links by @ziming in https://github.com/rupadana/filament-announce/pull/34
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/rupadana/filament-announce/pull/37
+* Bump aglipanci/laravel-pint-action from 2.4 to 2.5 by @dependabot in https://github.com/rupadana/filament-announce/pull/39
+* Compatibility with Laravel 12.x by @marcogermani87 in https://github.com/rupadana/filament-announce/pull/40
+
+### New Contributors
+
+* @ziming made their first contribution in https://github.com/rupadana/filament-announce/pull/34
+* @marcogermani87 made their first contribution in https://github.com/rupadana/filament-announce/pull/40
+
+**Full Changelog**: https://github.com/rupadana/filament-announce/compare/3.2.5...3.2.6
+
 ## 3.2.5 - 2024-06-21
 
 ### What's Changed
